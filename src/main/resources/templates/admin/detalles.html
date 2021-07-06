@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+<body>
+<nav th:replace="layouts/base-layout :: menu"></nav>
+<div class="container mt-5">
+    <div class="alert alert-primary alert-dismissible fade show" role="alert" th:if="${detalleSaved != null}" th:text="${detalleSaved}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <form th:action="@{/detalles/saved}" th:object="${detalle}" method="post">
+        <select class="form-select mb-2 mt-5" th:field="*{serie}"><!-- aria-label='th:text="${serie.nombre}"' -->
+            <option selected th:value="${serie.id}" th:text="${serie.nombre}"></option>
+        </select>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="capitulo" placeholder="Capitulo" th:field="*{capitulo}">
+                    <label for="capitulo" class="form-label">@Messages("capitulo")</label>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="temp" placeholder="Temporada" th:field="*{temporada}">
+                    <label for="temp" class="form-label">@Messages("temporada")</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-floating mb-1">
+            <input type="text" class="form-control" id="link1" placeholder="Link 1" th:field="*{link1}">
+            <label for="link1" class="form-label">@Messages("link1")</label>
+        </div>
+        <div class="form-floating mb-1">
+            <input type="text" class="form-control" id="link2" placeholder="Link 2" th:field="*{link2}">
+            <label for="link2" class="form-label">@Messages("link2")</label>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="duracion" placeholder="Duracion" th:field="*{duracion}">
+                    <label for="duracion" class="form-label">@Messages("duracion")</label>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="form-floating mb-1">
+                    <input type="date" class="form-control" id="datee" placeholder="Date" th:field="*{estreno}">
+                    <label for="datee" class="form-label">@Messages("date")</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-1">
+            <button class="btn btn-primary" type="submit">Save Detalle</button>
+        </div>
+    </form>
+</div>
+<div th:replace="layouts/base-layout :: footer"></div>
+<script th:replace="layouts/base-layout :: jsboot"></script>
+</body>
+</html>

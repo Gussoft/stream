@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+<body>
+<nav th:replace="layouts/base-layout :: menu"></nav>
+    <div class="container justify-content-center mt-5">
+        <h1 class="text-center mt-5">Formulario de Insercion de Series</h1>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert" th:if="${SerieSaved != null}"
+             th:text="${SerieSaved}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <form th:action="@{/admin/saved}" th:object="${serie}" method="post" enctype="multipart/form-data">
+            <div class="form-floating mb-1">
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" th:field="*{nombre}">
+                <label for="nombre" class="form-label">@Messages("nombre")</label>
+            </div>
+            <div class="form-floating mb-1">
+                <input type="text" class="form-control" id="sinopsis" placeholder="Sinopsis" th:field="*{sinopsis}">
+                <label for="sinopsis" class="form-label">@Messages("sinopsis")</label>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-floating mb-1">
+                        <input type="number" class="form-control" id="episodio" placeholder="Episodio" th:field="*{episodios}">
+                        <label for="episodio" class="form-label">@Messages("episodio")</label>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-floating mb-1">
+                        <input type="date" class="form-control" id="datee" placeholder="Date" th:field="*{fechae}">
+                        <label for="datee" class="form-label">@Messages("date")</label>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-floating mb-1">
+                        <input type="file" class="form-control" id="banner" placeholder="baneer" name="fileb">
+                        <label for="banner" class="form-label">@Messages("banner")</label>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-floating mb-1">
+                        <input type="file" class="form-control" id="thumbs" placeholder="Thumbs" name="filet">
+                        <label for="thumbs" class="form-label">@Messages("thumbs")</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-1">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+
+        </form>
+    </div>
+<div th:replace="layouts/base-layout :: footer"></div>
+<script th:replace="layouts/base-layout :: jsboot"></script>
+</body>
+</html>

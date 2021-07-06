@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+<body>
+    <nav th:replace="layouts/base-layout :: menu"></nav>
+
+    <div class="album py-5 bg-light mt-5">
+        <div class="container mt-1">
+            <div class="alert alert-success" th:if="${savedcomentario != null}" th:text="${savedcomentario}"></div>
+            <h2>Animes de Estreno!</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3">
+
+                <div class="col" th:each="item : ${series}">
+                    <div class="card shadow-sm">
+                        <img th:src="@{'/uploads/'+${item.thumbs}}" alt="" class="img fluid rounded mx-auto d-block m-1" width="240" height="350">
+                        <div class="card-body">
+                            <p class="card-text" th:text="${item.nombre}"></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+        <!--div th:each="item : ${series}" class="">
+            <p><img th:src="@{'/uploads/'+${item.thumbs}}" class="img-fluid" alt="" height="350" width="200"></p>
+            <p th:text="${item.nombre}"></p>
+        </div-->
+
+
+    <div th:replace="layouts/base-layout :: footer"></div>
+    <script th:replace="layouts/base-layout :: jsboot"></script>
+</body>
+</html>
