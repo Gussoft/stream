@@ -22,6 +22,9 @@ public class Serie {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "serie")
     private List<Detalle> detalles;
 
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "serie")
+    private List<Comentario> comentarios;
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date fechae;
@@ -30,7 +33,7 @@ public class Serie {
     }
 
     public Serie(Long id, String nombre, String sinopsis, String episodios, String banner,
-                 String thumbs, Date fechae, List<Detalle> detalles) {
+                 String thumbs, Date fechae, List<Detalle> detalles, List<Comentario> comentarios) {
         this.id = id;
         this.nombre = nombre;
         this.sinopsis = sinopsis;
@@ -39,6 +42,7 @@ public class Serie {
         this.thumbs = thumbs;
         this.fechae = fechae;
         this.detalles = detalles;
+        this.comentarios = comentarios;
     }
 
     public Long getId() {
@@ -107,5 +111,13 @@ public class Serie {
 
     public void addDetalle(Detalle detalle){
         detalles.add(detalle);
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 }

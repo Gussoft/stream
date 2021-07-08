@@ -31,7 +31,12 @@ public class SerieController {
     private ComentarioService comentarioService;
 
     @GetMapping("/ver-serie/{id}")
-    public String verSerie(@PathVariable Long id, Model model){ // ver-comentarios
+    public String verSerie(@PathVariable Long id, Model model, Authentication auth){ // ver-comentarios
+        if (auth != null){
+            String username = auth.getName();
+            model.addAttribute("username", username);
+            //System.out.println("username = " + username);
+        }
         Serie serie = service.seriebyId2(id);
         model.addAttribute("serie", serie);
 

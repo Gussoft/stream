@@ -16,4 +16,14 @@ public class ComentarioServiceImpl implements ComentarioService {
     public void SavedComentario(Comentario comentario) {
         repo.save(comentario);
     }
+
+    @Override
+    public Comentario buscarporId(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteComentario(Long id) {
+        repo.deleteById(id);
+    }
 }

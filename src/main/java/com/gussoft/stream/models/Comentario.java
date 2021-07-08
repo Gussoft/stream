@@ -1,6 +1,7 @@
 package com.gussoft.stream.models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Comentario {
@@ -16,6 +17,8 @@ public class Comentario {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Serie serie;
+
+    private Date fecha = new Date();
 
     public Comentario() {
     }
@@ -57,5 +60,13 @@ public class Comentario {
 
     public void setSerie(Serie serie) {
         this.serie = serie;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 }

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+<body>
+<nav th:replace="layouts/base-layout :: menu"></nav>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-6 text-center mb-3">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h1>Comentarios Reales!</h1>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/comentarios/editar/}" th:object="${comentario}">
+
+                        <div class="form-floating">
+                    <textarea class="form-control mb-2" placeholder="Leave a comment here" id="floatingTextarea"
+                              th:field="*{texto}" rows="5"></textarea>
+                            <label for="floatingTextarea">Comments</label>
+                        </div>
+                        <input type="hidden" th:field="*{id}">
+                        <input type="hidden" th:field="*{serie}">
+                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="layouts/base-layout :: footer"></div>
+<script th:replace="layouts/base-layout :: jsboot"></script>
+</body>
+</html>

@@ -13,7 +13,7 @@
             <div th:if="${param.error}" class="alert alert-danger text-center" role="alert">
                 Credenciales Incorrectas!
             </div>
-            <form th:action="@{/signin}" method="post">
+            <form th:action="@{/auth}" method="post" id="loginform" role="form">
                 <div class="form-floating">
                     <!---->
                     <input type="text" class="form-control" name="username" id="username" placeholder="Username" required autocomplete="off">
@@ -25,7 +25,7 @@
                     <label for="pass">@Messages("login.password")</label>
                 </div>
                 <div class="form-floating mt-3">
-                    <button type="submit" class="w-100 btn btn-lg btn-primary">@Messages("login.login")</button>
+                    <input type="submit" class="w-100 btn btn-lg btn-primary" value="login.login">
                 </div>
             </form>
         </div>
