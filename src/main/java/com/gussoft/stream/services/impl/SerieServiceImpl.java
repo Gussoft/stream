@@ -34,4 +34,14 @@ public class SerieServiceImpl implements SerieService {
     public Serie seriebyId2(Long id) {
         return repo.findById(id).orElse(null);
     }
+
+    @Override
+    public void deletedSerie(Long id) {
+        repo.deleteById(id);
+    }
+
+    @Override
+    public Serie getSerieByNombre(String nombre) {
+        return repo.findByNombre(nombre);
+    }
 }

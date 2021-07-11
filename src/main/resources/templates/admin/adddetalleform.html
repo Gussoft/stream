@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+<body>
+<nav th:replace="layouts/base-layout :: menu"></nav>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 mt-5">
+            <div class="card mb-3">
+                <div class="card-header"><h1 class="text-center"> Add New Detalle</h1></div>
+                <div class="card-body">
+                    <form th:action="@{/admin/detalle-saved}" th:object="${detalle}" method="post">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="serie" class="form-label">Serie</label>
+                                <select class="form-select" id="serie" th:field="*{serie}">
+                                    <option th:value="${serie.id}" th:text="${serie.nombre}"></option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please Serie a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="est" class="form-label">Estreno</label>
+                                <input type="date" class="form-control" id="est" placeholder="Estreno"
+                                       th:field="*{estreno}">
+                                <div class="invalid-feedback">
+                                    Estreno required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="dur" class="form-label">Duracion</label>
+                                <input type="text" class="form-control" id="dur" placeholder="Duracion del Video"
+                                       th:field="*{duracion}">
+                                <div class="invalid-feedback">
+                                    Duracion required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="cap" class="form-label">Capitulo</label>
+                                <input type="text" class="form-control" id="cap" placeholder="Capitulo"
+                                       th:field="*{capitulo}">
+                                <div class="invalid-feedback">
+                                    Capitulo required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Temporada</label>
+                                <input type="text" class="form-control" id="zip" placeholder="Temporada"
+                                       th:field="*{temporada}">
+                                <div class="invalid-feedback">
+                                    Temporada required.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="link1" class="form-label">Link 1</label>
+                                <input type="text" class="form-control" id="link1" placeholder="Link 1"
+                                       th:field="*{link1}" required>
+                                <div class="invalid-feedback">
+                                    Valid Link 1 is required.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="link2" class="form-label">Link 2</label>
+                                <input type="text" class="form-control" id="link2" placeholder="Link 1"
+                                       th:field="*{link2}" required>
+                                <div class="invalid-feedback">
+                                    Valid Link 2 is required.
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-100 btn btn-success btn-lg mt-2" type="submit">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div th:replace="layouts/base-layout :: footer"></div>
+<script th:replace="layouts/base-layout :: jsboot"></script>
+</body>
+</html>

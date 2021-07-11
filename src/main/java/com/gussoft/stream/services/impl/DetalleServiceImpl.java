@@ -16,4 +16,14 @@ public class DetalleServiceImpl implements DetalleService {
     public void saveDetalle(Detalle detalle) {
         repo.save(detalle);
     }
+
+    @Override
+    public Detalle getDetalle(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    @Override
+    public void DeletedDetalle(Long id) {
+        repo.deleteById(id);
+    }
 }

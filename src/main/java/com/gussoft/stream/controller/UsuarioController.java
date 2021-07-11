@@ -37,6 +37,11 @@ public class UsuarioController {
 
     @PostMapping("/saved")
     public String savedUsuario(String username, String password, Model model, RedirectAttributes mensaje){
+        if (usuarioService.existsByUsername(username)){
+            model.addAttribute("usuarioreperido", "El Usuario ya Existe!");
+            return "registro";
+        }
+
         Usuario usuario = new Usuario();
         usuario.setUsername(username);
         usuario.setPassword(passwordEncoder.encode(password));

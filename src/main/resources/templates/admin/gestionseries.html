@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+<body>
+<nav th:replace="layouts/base-layout :: menu"></nav>
+<div class="container my-5">
+    <div class="alert alert-danger d-flex align-items-center" role="alert" th:if="${seriedelete != null}">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div th:text="${seriedelete}"></div>
+    </div>
+    <div class="alert alert-success d-flex align-items-center" role="alert" th:if="${SerieEdit != null}">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div th:text="${SerieEdit}"></div>
+    </div>
+    <div class="alert alert-success d-flex align-items-center" role="alert" th:if="${detalleEditado != null}">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div th:text="${detalleEditado}"></div>
+    </div>
+    <div class="alert alert-danger d-flex align-items-center" role="alert" th:if="${detalleEliminado != null}">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div th:text="${detalleEliminado}"></div>
+    </div>
+    <div class="alert alert-primary d-flex align-items-center" role="alert" th:if="${detalleSaved != null}">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div th:text="${detalleSaved}"></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mb-3">
+            <div class="card mt-3">
+                <div class="card-header">
+                    Mantenimiento de Series!
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                                <tr th:each="serie : ${serie}">
+                                    <td th:text="${serie.nombre}" class="text-center"></td>
+                                    <td>
+                                        <a th:href="@{/admin/delete-serie/}+${serie.id}" class="btn btn-danger btn-sm">Delete</a>
+
+                                        <a th:href="@{/admin/edit-serie/}+${serie.id}" class="btn btn-success btn-sm mx-1">Edit</a>
+
+                                        <a th:href="@{/detalles/add-serie/}+${serie.id}" class="btn btn-primary btn-sm">Add</a>
+                                    </td>
+                                    <td>
+                                        <div><!--th:each="det : ${serie.detalles}" -->
+                                            <span class="badge bg-danger" th:text="${serie.fechae}"></span>
+                                            <a th:href="@{/admin/edit-detalles/}+${serie.id}" class="btn btn-sm btn-info">Edit</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div th:replace="layouts/base-layout :: footer"></div>
+<script th:replace="layouts/base-layout :: jsboot"></script>
+</body>
+</html>

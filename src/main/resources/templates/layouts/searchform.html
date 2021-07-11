@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="buscar">
+    <form class="d-flex mx-3" th:action="@{/search}" th:object="${serie}" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+</html>

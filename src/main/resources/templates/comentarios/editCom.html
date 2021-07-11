@@ -15,9 +15,9 @@
                     <form th:action="@{/comentarios/editar/}" th:object="${comentario}">
 
                         <div class="form-floating">
-                    <textarea class="form-control mb-2" placeholder="Leave a comment here" id="floatingTextarea"
+                        <textarea class="form-control mb-2" placeholder="Leave a comment here" id="floatingTextarea"
                               th:field="*{texto}" rows="5"></textarea>
-                            <label for="floatingTextarea">Comments</label>
+                            <label for="floatingTextarea">Edit Comments</label>
                         </div>
                         <input type="hidden" th:field="*{id}">
                         <input type="hidden" th:field="*{serie}">

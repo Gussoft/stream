@@ -6,6 +6,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-6 mt-4">
+            <div class="alert alert-danger text-center my-5" th:if="${usuarioreperido != null}" th:text="${usuarioreperido}"></div>
             <h1 class="text-center mt-3">REGISTRO</h1>
             <form th:action="@{/usuario/saved}" method="post">
                 <div class="form-floating mb-1">

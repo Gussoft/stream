@@ -4,6 +4,10 @@ import com.gussoft.stream.models.Detalle;
 
 public interface DetalleService {
 
-    public void saveDetalle(Detalle detalle);
+    void saveDetalle(Detalle detalle);
+
+    Detalle getDetalle(Long id);
+
+    void DeletedDetalle(Long id);
 
 }

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
@@ -26,21 +26,20 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav mr-auto ml-auto text-center">
                 <a class="nav-link active" th:href="@{/}">Home</a>
-                <a class="nav-link" th:href="@{/galery}">Galeria</a>
+                <a class="nav-link" th:href="@{/gallery}">Galeria</a>
                 <a class="nav-link" th:href="@{/series}">Temporada</a>
                 <a class="nav-link" th:href="@{/admin/serie}" sec:authorize="hasRole('ROLE_ADMIN')">Add Serie</a>
+                <a class="nav-link" th:href="@{/admin/gestion-series}" sec:authorize="hasRole('ROLE_ADMIN')">Manage Serie</a>
 
                 <a class="nav-link" th:href="@{/usuario/registro}" sec:authorize="!isAuthenticated()">Registro</a>
-                <form class="d-flex mx-3">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div th:replace="layouts/searchform :: buscar"></div>
 
                 <div class="dropdown d-flex">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                                                     id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>Anonimus</strong>
+                        <strong th:if="${username != null}" th:text="${username}"></strong>
+                        <strong th:if="${username == null}" th:text="Anonimus"></strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a></li>

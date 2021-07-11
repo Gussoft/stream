@@ -4,19 +4,28 @@
 <body>
 <nav th:replace="layouts/base-layout :: menu"></nav>
 
-    <div class="container my-4">
-        <h2>Comentarios Reales</h2>
-
-        <form th:action="@{/series/savedcomentario}" th:object="${comentario}" method="post">
-            <h3 th:text="${comentario.serie.nombre}"></h3>
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="area" th:field="*{texto}">
-                </textarea>
-                <label for="area">Comments</label>
-                <input type="hidden" th:field="${comentario.serie.id}" />
-                <button type="submit" class="btn btn-primary mt-3">Comentar</button>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center mb-3">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h2>Comentarios Reales</h2>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/series/savedcomentario}" th:object="${comentario}" method="post">
+                            <h3 th:text="${comentario.serie.nombre}"></h3>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="area" th:field="*{texto}">
+                                </textarea>
+                                <label for="area">New Comments</label>
+                                <input type="hidden" th:field="${comentario.serie.id}" />
+                                <button type="submit" class="btn btn-primary mt-3">Comentar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 
 <div th:replace="layouts/base-layout :: footer"></div>

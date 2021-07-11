@@ -104,56 +104,46 @@
     </div>
 </div>
 <!-- EMPIEZA EL DETALLE DE SERIE -->
-<div class="container my-2 ">
-    <div class="accordion accordion-flush border" id="accordionFlushExample">
+<div class="container my-3 ">
+    <div class="accordion" id="accordionguss">
         <div class="accordion-item" th:each="det : ${serie.detalles}">
-            <h2 class="accordion-header" id="flush-headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    <h4>Capitulo : </h4><h4 th:text="${det.capitulo}"></h4>
+            <h2 class="accordion-header" th:id="'headingOne'+${det.capitulo}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" th:data-bs-target="'#collapseOne'+${det.capitulo}" aria-expanded="true" aria-controls="collapseOne">
+                    Capitulo <label th:text="${det.capitulo}"></label>
                 </button>
             </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" th:each="video : ${serie.detalles}"
-                 data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">
-                    <!--bucle del detalle -->
-                    <div class="row my-3">
-                        <div class="col-sm-12 col-md-4 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="list-group" id="list-tab" role="tablist">
+            <div th:id="'collapseOne'+${det.capitulo}" class="accordion-collapse collapse" th:aria-labelledby="'headingOne'+${det.capitulo}" data-bs-parent="#accordionguss">
+                <div class="accordion-body"><!-- for?-->
+                    <!-- BODY CONTENT-->
 
-                                        <a class="list-group-item list-group-item-action" th:id="'list-home-list'+${video.capitulo}" data-bs-toggle="list"
-                                           th:href="'#list-home'+${video.capitulo}" role="tab" th:aria-controls="'list-home'+${video.capitulo}">
-                                            <h3>Servidor : <h2 th:text="${video.capitulo}"></h2></h3>
-
-                                        </a>
-                                    </div>
+                    <div class="bd-example">
+                        <nav>
+                            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                                <button class="nav-link active" th:id="'nav-home-tab'+${det.capitulo}" data-bs-toggle="tab" th:data-bs-target="'#nav-home'+${det.capitulo}" type="button" role="tab"
+                                        th:aria-controls="'nav-home'+${det.capitulo}" aria-selected="true">Servidor <label th:text="${det.capitulo}"></label></button>
+                                <button class="nav-link" th:id="'nav-profile-tab'+${det.capitulo}" data-bs-toggle="tab" th:data-bs-target="'#nav-profile'+${det.capitulo}" type="button" role="tab"
+                                        th:aria-controls="'nav-profile'+${det.capitulo}" aria-selected="false">Servidor <label th:text="${det.capitulo+1}"></label></button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" th:id="'nav-home'+${det.capitulo}" role="tabpanel" th:aria-labelledby="'nav-home-tab'+${det.capitulo}">
+                                    yes
+                                <div class="ratio ratio-16x9">
+                                    <iframe th:src="${det.link1}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
-                        </div>
-                        <!-- videos-->
-                        <div class="col-sm-12 col-md-8 col-lg-8 ">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tab-content" id="nav-tabContent" th:each="video2 : ${serie.detalles}">
-                                        <div class="tab-pane fade" th:id="'list-home'+${video2.capitulo}" role="tabpanel" th:aria-labelledby="'list-home-list'+${video2.capitulo}">
-                                            <div class="ratio ratio-16x9"><!--show active -->
-                                                <iframe th:src="${video2.link1}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
 
-                                        <div class="tab-pane fade" th:id="'list-home'+${video2.capitulo}" role="tabpanel" th:aria-labelledby="'list-home-list'+${video2.capitulo}">
-                                            <div class="ratio ratio-16x9">
-                                                <iframe th:src="${video2.link2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="tab-pane fade" th:id="'nav-profile'+${det.capitulo}" role="tabpanel" th:aria-labelledby="'nav-profile-tab'+${det.capitulo}">
+                                    not
+                                <div class="ratio ratio-16x9">
+                                    <iframe th:src="${det.link2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
+
+                    <!--END CONTENT-->
                 </div>
             </div>
         </div>
@@ -161,11 +151,13 @@
 
     <!-- COMENTARIOS DE SERIES -->
 
-    <div class="mt-1">
+    <div class="my-2">
         <a th:href="@{'/series/comentario/'+${serie.id}}" class="btn btn-outline-info">Comentar</a>
     </div>
 
 </div>
+
+<!--COMIENZA LOS COMENTARIOS -->
 <div class="container mt-2">
     <div class="list-group">
 

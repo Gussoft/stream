@@ -13,6 +13,11 @@ public interface SerieService {
 
     Optional<Serie> seriebyId(Long id);
 
-    //forma 2
+    //forma 2 // debes pasarle un OrElse(null)
     Serie seriebyId2(Long id);
+
+    void deletedSerie(Long id);
+
+    Serie getSerieByNombre(String nombre);
+
 }

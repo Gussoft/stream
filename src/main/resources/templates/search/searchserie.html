@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+<body>
+<nav th:replace="layouts/base-layout :: menu"></nav>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 mt-5">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h3 th:if="${serie != null}" th:text="${serie.nombre}"></h3>
+                    <h3 th:if="${nofound != null}" th:text="${nofound}"></h3>
+                </div>
+                <div class="card-body">
+                    <div class="row justify-content-start" th:if="${serie != null}">
+                        <div class="col-4">
+                            <a class="btn btn-sm btn-outline-secondary" th:href="@{/series/ver-serie/}+${serie.id}">
+                                <img th:src="@{'/uploads/'+${serie.thumbs}}" alt="" class="img fluid rounded mx-auto d-block m-1" width="240" height="350">
+                            </a>
+                            <h5 class="card-text mt-2" th:text="${serie.nombre}"></h5>
+                        </div>
+                        <div class="col-8">
+                            <h3>Episodios </h3><br>
+                            <span th:text="${serie.sinopsis}"></span><br>
+                            <h5>Fecha de Estreno : </h5> <small th:text="${#dates.format(serie.fechae,'dd-MM-yyyy')}"></small><br>
+                            <h5>Episodios : </h5> <small th:text="${serie.episodios}"></small><br>
+                            <div class="my-4">
+                                <a th:href="@{'/series/comentario/'+${serie.id}}" class="btn btn-primary">Comentar</a>
+                                <a th:href="@{'/series/ver-serie/'+${serie.id}}" class="btn btn-primary">Ver Todo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<div th:replace="layouts/base-layout :: footer"></div>
+<script th:replace="layouts/base-layout :: jsboot"></script>
+</body>
+</html>
